@@ -259,7 +259,8 @@ def ensure_command(cmd: Union[AnyStrOrPath,Iterable[AnyStrOrPath]],
 		stdout = PIPE if capture_stdout else DEVNULL
 		stderr = PIPE
 
-	child = do_popen(cmd, cwd=cwd, shell=isinstance(cmd, str), stdout=stdout, stderr=stderr, text=True)
+	child = do_popen(cmd, cwd=cwd, shell=isinstance(cmd, str),
+			stdout=stdout, stderr=stderr, errors='ignore')
 	if child is None:
 		sys.exit(127)
 
